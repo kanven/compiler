@@ -1,0 +1,46 @@
+Statement ::=  And Statement'
+
+Statement' ::= or And Statement'
+             | ∈
+
+And ::= Compare And'
+
+And' ::= and Compare And'
+        | ∈
+
+Compare ::= Expr Compare'
+
+Compare' ::= > Expr Compare'
+            | >= Expr Compare'
+            | < Expr Compare'
+            | <= Expr Compare'
+            | != Expr Compare'
+            | == Expr Compare'
+            | ∈
+
+
+Expr ::= Term Expr'
+
+Expr' ::= + Term Expr'
+        | - Term Expr'
+        | ∈
+
+Term ::= Value Term'
+
+Term' ::= * Value Term'
+        | / Value Term'
+        | ∈
+
+Value ::= not Factor
+         | Factor
+
+Factor ::=  ( Statement )
+          | INF
+          | NUM
+          | DOUBLE
+
+INF ::= [a-zA-Z]
+
+NUM ::= [1-9][0-9]*
+
+DOUBLE ::= [0-9]+\\.[0-9]+
